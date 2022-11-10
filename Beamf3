@@ -1,0 +1,51 @@
+import math
+
+
+class BeamF3:
+
+    def __init__(self, nasio=None):
+        self.nasio = nasio
+
+    def set_nasian(self, x):
+        x = input("Tragus to Tragus (CM): ")
+        self.nasio = x
+        return nasio
+
+
+
+
+nasion_to_inion = 60
+tragus_to_tragus = 60
+R = (1/2) * nasion_to_inion - ((10/100) * ((1/2) * nasion_to_inion))
+R2 = (1/2) * tragus_to_tragus - ((10/100) * (1/2) * tragus_to_tragus)
+R1 = R - (20/100 * R)
+circumference = 60
+x = (1/2) * \
+((R1 + \
+((R2 * R1 * math.degrees(math.sin(288))) / ((R1 * math.degrees(math.cos(288))) - R2))) \
+/
+(((R1 * math.degrees(math.sin(288))) / ((R1 * math.degrees(math.cos(288))) - R2)) \
+- (((R2 * math.degrees(math.sin(324))) + R1) / (R2 * math.degrees(math.cos(324))))))
+
+y = (1/2) * \
+((((R2 * math.degrees(math.sin(324))) + R1) \
+/ \
+(R2 * math.degrees(math.cos(324)))) \
+* \
+(x / (1/2)) \
++ R1)
+
+r_squared = (x ** 2) + (y ** 2)
+r = math.sqrt(r_squared)
+r_corrected = r * 0.9
+angle = math.degrees(math.atan(y/x))
+midline_angle = 90 - angle
+
+
+distance_from_circumference = (midline_angle * circumference) / 360
+
+point_x = (midline_angle * circumference) / 360 # distance along circumference from midline
+#print(point_x)
+
+nasion = BeamF3()
+print(nasion.set_nasian(1))
